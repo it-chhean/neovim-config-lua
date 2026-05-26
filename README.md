@@ -278,8 +278,3 @@ lua/
 └── settings/
 ```
 
- 
-
-## License
-
-MIT
