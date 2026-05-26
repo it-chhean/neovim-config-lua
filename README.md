@@ -173,47 +173,47 @@ JDTLS will automatically start when a valid Java project is detected.
 
 ### General
 
-| Key | Action |
-| | |
-| `jk` | Exit insert mode |
-| `<leader>w` | Save file |
-| `<leader>q` | Quit |
-| `<leader>h` | Clear search highlight |
-| `<leader>e` | Toggle file explorer |
+| Key            | Action                |
+|     -|       --|
+| `jk`           | Exit insert mode      |
+| `<leader>w`    | Save file             |
+| `<leader>q`    | Quit                  |
+| `<leader>h`    | Clear search highlight|
+| `<leader>e`    | Toggle file explorer  |
 
 ### Telescope
 
-| Key | Action |
-| | |
-| `<leader>ff` | Find files |
-| `<leader>fg` | Live grep |
-| `<leader>fb` | Buffers |
-| `<leader>fh` | Help tags |
-| `<leader>fr` | Recent files |
+| Key            | Action       |
+|     -|    --|
+| `<leader>ff`   | Find files   |
+| `<leader>fg`   | Live grep    |
+| `<leader>fb`   | Buffers      |
+| `<leader>fh`   | Help tags    |
+| `<leader>fr`   | Recent files |
 
 ### Java (JDTLS)
 
-| Key | Action |
-| | |
-| `<leader>oi` | Organize imports |
-| `<leader>ev` | Extract variable |
-| `<leader>ec` | Extract constant |
-| `<leader>tm` | Test nearest method |
+| Key            | Action            |
+|     -|      -|
+| `<leader>oi`   | Organize imports  |
+| `<leader>ev`   | Extract variable  |
+| `<leader>ec`   | Extract constant  |
+| `<leader>tm`   | Test nearest method |
 
  
 
 ## Plugins
 
-| Plugin | Purpose |
-| | |
-| lazy.nvim | Plugin manager |
-| nvim-lspconfig | LSP configuration |
-| nvim-jdtls | Java language server |
-| nvim-cmp | Autocompletion engine |
-| LuaSnip | Snippet support |
-| telescope.nvim | Fuzzy finder |
-| nvim-tree.lua | File explorer |
-| smear-cursor.nvim | Cursor animation |
+| Plugin            | Purpose               |
+|      -|       --|
+| lazy.nvim         | Plugin manager        |
+| nvim-lspconfig    | LSP configuration     |
+| nvim-jdtls        | Java language server  |
+| nvim-cmp          | Autocompletion engine |
+| LuaSnip           | Snippet support       |
+| telescope.nvim    | Fuzzy finder          |
+| nvim-tree.lua     | File explorer         |
+| smear-cursor.nvim | Cursor animation      |
 
  
 
@@ -256,6 +256,7 @@ cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim
 make
 ```
 
+ 
 
 ## Folder Structure
 
@@ -276,3 +277,9 @@ lua/
 ├── keymaps/
 └── settings/
 ```
+
+ 
+
+## License
+
+MIT
