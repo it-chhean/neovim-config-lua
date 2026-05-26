@@ -88,13 +88,13 @@ require("lazy").setup({
             require("nvim-tree").setup({
                 hijack_cursor = true,
                 update_focused_file = { enable = true },
-                view = { width = 60, side = "left" },
+                view = { width = 50, side = "left" },
             })
         end,
     },
 
     -- Icons
-    { "nvim-tree/nvim-web-devicons" },
+--    { "nvim-tree/nvim-web-devicons" },
 
     -- Telescope
     {
@@ -167,7 +167,7 @@ require("lazy").setup({
 -- General settings
 
 vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = true 
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
