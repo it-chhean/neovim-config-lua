@@ -236,10 +236,7 @@ require("lazy").setup({
     },
 })
 
--- ─────────────────────────────────────────────
 -- General settings
--- ─────────────────────────────────────────────
-
 vim.opt.nu             = true
 vim.opt.relativenumber = true
 
@@ -276,10 +273,7 @@ vim.opt.autowriteall = true
 
 vim.opt.clipboard = "unnamedplus"
 
--- ─────────────────────────────────────────────
 -- Transparent background
--- ─────────────────────────────────────────────
-
 local transparent_groups = {
     "Normal", "NormalNC", "NormalFloat",
     "FloatBorder", "SignColumn", "EndOfBuffer",
@@ -290,10 +284,7 @@ end
 vim.api.nvim_set_hl(0, "NvimTreeNormal",   { bg = "none" })
 vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
 
--- ─────────────────────────────────────────────
 -- Keymaps
--- ─────────────────────────────────────────────
-
 local keymap = vim.keymap
 
 keymap.set("i", "jk",         "<Esc>")
@@ -313,10 +304,7 @@ if tel_ok then
     keymap.set("n", "<leader>fr", builtin.oldfiles)
 end
 
--- ─────────────────────────────────────────────
 -- Autocommands
--- ─────────────────────────────────────────────
-
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end,
@@ -332,10 +320,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- ─────────────────────────────────────────────
 -- Java (JDTLS) — safe-loaded with pcall
--- ─────────────────────────────────────────────
-
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 if jdtls_ok then
     local home = os.getenv("HOME")
