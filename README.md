@@ -1,38 +1,6 @@
-# Neovim Java Development Setup
+### A modern Neovim configuration powered by Lazy.nvim for Java and general development.
 
-A modern Neovim configuration powered by Lazy.nvim for Java and general development.
-
- 
-
-## Features
-
-- Java development using JDTLS
-- Fast plugin management with Lazy.nvim
-- Telescope fuzzy finder
-- NvimTree file explorer
-- IntelliSense-like autocompletion
-- Transparent UI
-- Smear cursor animation
-- Lombok support
-- Auto organize imports
-- VSCode-like workflow
-
- 
-
-## Requirements
-
-Install these packages before proceeding.
-
-### Ubuntu / Debian
-
-```bash
-sudo apt update
-sudo apt install neovim git openjdk-17-jdk maven unzip curl build-essential wget
-```
-
- 
-
-## Create Neovim Config Folder
+### Create Neovim Config Folder
 
 ```bash
 mkdir -p ~/.config/nvim
@@ -43,8 +11,6 @@ Move into the directory:
 ```bash
 cd ~/.config/nvim
 ```
-
- 
 
 ## Create init.lua
 
@@ -71,7 +37,6 @@ Exit:
 ```vim
 :q
 ```
-
  
 
 ## Start Neovim
@@ -84,7 +49,7 @@ Lazy.nvim will automatically install all plugins. Wait until the installation fi
 
  
 
-## Install Java JDTLS
+### Install Java JDTLS
 
 Create the JDTLS directory:
 
@@ -121,7 +86,7 @@ Expected folder structure:
 
  
 
-## Install Nerd Font
+### Install Nerd Font
 
 Recommended fonts:
 
@@ -136,7 +101,7 @@ After installation:
 
  
 
-## Lombok Support (Optional)
+### Lombok Support (Optional)
 
 Lombok is automatically detected from the Maven repository. Add the following dependency to your Java project:
 
@@ -150,7 +115,7 @@ Lombok is automatically detected from the Maven repository. Add the following de
 
  
 
-## Start a Java Project
+### Start a Java Project
 
 Create a new project directory:
 
@@ -215,38 +180,6 @@ JDTLS will automatically start when a valid Java project is detected.
 | nvim-tree.lua     | File explorer         |
 | smear-cursor.nvim | Cursor animation      |
 
- 
-
-## Recommended Terminals
-
-- Kitty
-- WezTerm
-- Alacritty
-
-Enable transparency in your terminal settings for the best visual experience.
-
- 
-
-## Troubleshooting
-
-### JDTLS Not Starting
-
-Check your Java version:
-
-```bash
-java --version
-```
-
-Ensure the following conditions are met:
-
-- JDK 17 or higher is installed
-- The `config_linux` directory exists under `~/.local/share/jdtls/`
-- The project root contains at least one of the following:
-  - `.git`
-  - `pom.xml`
-  - `gradlew`
-  - `mvnw`
-
 ### Telescope FZF Not Working
 
 Build the extension manually:
@@ -256,8 +189,6 @@ cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim
 make
 ```
 
- 
-
 ## Folder Structure
 
 Current structure:
@@ -266,15 +197,3 @@ Current structure:
 ~/.config/nvim/
 └── init.lua
 ```
-
-Recommended future structure:
-
-```
-lua/
-├── config/
-├── plugins/
-├── lsp/
-├── keymaps/
-└── settings/
-```
-
