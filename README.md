@@ -83,25 +83,6 @@ Expected folder structure:
 └── features
 ```
 
-Start a Java Project
-
-Create a new project directory:
-
-```bash
-mkdir demo-project
-cd demo-project
-```
-
-Open it with Neovim:
-
-```bash
-nvim .
-```
-
-JDTLS will automatically start when a valid Java project is detected.
-
- 
-
 Keymaps
 
 | Key            | Action                |
