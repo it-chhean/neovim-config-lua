@@ -58,19 +58,20 @@ require("lazy").setup({
                     vim.keymap.set("n", "<leader>ge", "<cmd>GoIfErr<CR>",      opts)
                     vim.keymap.set("n", "<leader>gS", "<cmd>GoFillStruct<CR>", opts)
                 end,
-                lsp_codelens          = true,
+                lsp_codelens            = true,
                 lsp_document_formatting = true,
-                lsp_inlay_hints       = { enable = false },
+                lsp_inlay_hints         = { enable = false },
                 diagnostic = {
-                    hdlr           = true,
-                    underline      = true,
-                    virtual_text   = { space = 2 },
-                    signs          = true,
+                    hdlr             = true,
+                    underline        = true,
+                    virtual_text     = { space = 2 },
+                    signs            = true,
                     update_in_insert = false,
                 },
             })
         end,
     },
+
 
     -- Auto close brackets / braces / quotes
     {
@@ -206,8 +207,18 @@ require("lazy").setup({
                             ["<Esc>"] = actions.close,
                         },
                     },
-                    file_ignore_patterns = { "node_modules", ".git/", "target/" },
-                    path_display         = { "truncate" },
+
+                    file_ignore_patterns = {
+                        "node_modules",
+                        ".git/",
+                        "target/",
+                    },
+
+                    path_display = { "truncate" },
+
+                    preview = {
+                        treesitter = false,
+                    },
                 },
             })
 
@@ -219,24 +230,27 @@ require("lazy").setup({
     {
         "sphamba/smear-cursor.nvim",
         opts = {
-            smear_between_buffers          = true,
-            smear_between_neighbor_lines   = true,
-            smear_insert_mode              = true,
-            scroll_buffer_space            = true,
-            stiffness                      = 0.8,
-            trailing_stiffness             = 0.6,
-            stiffness_insert_mode          = 0.7,
-            trailing_stiffness_insert_mode = 0.7,
-            damping                        = 0.95,
-            damping_insert_mode            = 0.95,
-            distance_stop_animating        = 0.5,
-            transparent_bg_fallback_color  = "#1e1e2e",
+            smear_between_buffers            = true,
+            smear_between_neighbor_lines     = true,
+            smear_insert_mode                = true,
+            scroll_buffer_space              = true,
+            stiffness                        = 0.8,
+            trailing_stiffness               = 0.6,
+            stiffness_insert_mode            = 0.7,
+            trailing_stiffness_insert_mode   = 0.7,
+            damping                          = 0.95,
+            damping_insert_mode              = 0.95,
+            distance_stop_animating          = 0.5,
+            transparent_bg_fallback_color    = "#1e1e2e",
             legacy_computing_symbols_support = false,
         },
     },
 })
 
+-- ─────────────────────────────────────────────
 -- General settings
+-- ─────────────────────────────────────────────
+
 vim.opt.nu             = true
 vim.opt.relativenumber = true
 
@@ -264,7 +278,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.number = true
+vim.opt.number     = true
 vim.opt.cursorline = true
 
 vim.opt.ignorecase   = true
@@ -273,7 +287,10 @@ vim.opt.autowriteall = true
 
 vim.opt.clipboard = "unnamedplus"
 
+-- ─────────────────────────────────────────────
 -- Transparent background
+-- ─────────────────────────────────────────────
+
 local transparent_groups = {
     "Normal", "NormalNC", "NormalFloat",
     "FloatBorder", "SignColumn", "EndOfBuffer",
@@ -284,17 +301,40 @@ end
 vim.api.nvim_set_hl(0, "NvimTreeNormal",   { bg = "none" })
 vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
 
+-- ─────────────────────────────────────────────
+-- LSP on_attach keymaps (global)
+-- ─────────────────────────────────────────────
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(ev)
+        local opts = { buffer = ev.buf, silent = true }
+        vim.keymap.set("n", "gd",         vim.lsp.buf.definition,  opts)
+        vim.keymap.set("n", "gD",         vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gi",         vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "K",          vim.lsp.buf.hover,       opts)
+        vim.keymap.set("n", "gr",         vim.lsp.buf.references,  opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,      opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<leader>f",  vim.lsp.buf.format,      opts)
+        vim.keymap.set("n", "<leader>d",  vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev, opts)
+        vim.keymap.set("n", "]d",         vim.diagnostic.goto_next, opts)
+    end,
+})
+
+-- ─────────────────────────────────────────────
 -- Keymaps
+-- ─────────────────────────────────────────────
+
 local keymap = vim.keymap
 
-keymap.set("i", "jk",         "<Esc>")
-keymap.set("n", "<leader>w",  ":w<CR>")
-keymap.set("n", "<leader>q",  ":q<CR>")
-keymap.set("n", "<leader>h",  ":nohlsearch<CR>")
-keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>")
+keymap.set("i", "jk",        "<Esc>")
+keymap.set("n", "<leader>w", ":w<CR>")
+keymap.set("n", "<leader>q", ":q<CR>")
+keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
--- Telescope keymaps — wrapped in pcall so startup doesn't crash if telescope
--- hasn't been installed yet on the very first launch
+-- Telescope keymaps
 local tel_ok, builtin = pcall(require, "telescope.builtin")
 if tel_ok then
     keymap.set("n", "<leader>ff", builtin.find_files)
@@ -304,7 +344,10 @@ if tel_ok then
     keymap.set("n", "<leader>fr", builtin.oldfiles)
 end
 
+-- ─────────────────────────────────────────────
 -- Autocommands
+-- ─────────────────────────────────────────────
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end,
@@ -320,7 +363,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Java (JDTLS) — safe-loaded with pcall
+-- ─────────────────────────────────────────────
+-- Java (JDTLS)
+-- ─────────────────────────────────────────────
+
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 if jdtls_ok then
     local home = os.getenv("HOME")
