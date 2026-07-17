@@ -1,6 +1,6 @@
-### A modern Neovim configuration powered by Lazy.nvim for Java and general development.
+A modern Neovim configuration powered by Lazy.nvim for Java and general development.
 
-### Create Neovim Config Folder
+Create Neovim Config Folder
 
 ```bash
 mkdir -p ~/.config/nvim
@@ -12,7 +12,7 @@ Move into the directory:
 cd ~/.config/nvim
 ```
 
-## Create init.lua
+Create init.lua
 
 ```bash
 touch init.lua
@@ -38,8 +38,7 @@ Exit:
 :q
 ```
  
-
-## Start Neovim
+Start Neovim
 
 ```bash
 nvim
@@ -49,7 +48,7 @@ Lazy.nvim will automatically install all plugins. Wait until the installation fi
 
  
 
-### Install Java JDTLS
+Install Java JDTLS
 
 Create the JDTLS directory:
 
@@ -84,38 +83,7 @@ Expected folder structure:
 └── features
 ```
 
- 
-
-### Install Nerd Font
-
-Recommended fonts:
-
-- JetBrainsMono Nerd Font
-- Cascadia Code Nerd Font
-
-After installation:
-
-1. Open terminal settings
-2. Navigate to font preferences
-3. Select your chosen Nerd Font
-
- 
-
-### Lombok Support (Optional)
-
-Lombok is automatically detected from the Maven repository. Add the following dependency to your Java project:
-
-```xml
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>latest</version>
-</dependency>
-```
-
- 
-
-### Start a Java Project
+Start a Java Project
 
 Create a new project directory:
 
@@ -134,9 +102,7 @@ JDTLS will automatically start when a valid Java project is detected.
 
  
 
-## Keymaps
-
-### General
+Keymaps
 
 | Key            | Action                |
 |     -|       --|
@@ -146,7 +112,7 @@ JDTLS will automatically start when a valid Java project is detected.
 | `<leader>h`    | Clear search highlight|
 | `<leader>e`    | Toggle file explorer  |
 
-### Telescope
+Telescope
 
 | Key            | Action       |
 |     -|    --|
@@ -156,18 +122,8 @@ JDTLS will automatically start when a valid Java project is detected.
 | `<leader>fh`   | Help tags    |
 | `<leader>fr`   | Recent files |
 
-### Java (JDTLS)
 
-| Key            | Action            |
-|     -|      -|
-| `<leader>oi`   | Organize imports  |
-| `<leader>ev`   | Extract variable  |
-| `<leader>ec`   | Extract constant  |
-| `<leader>tm`   | Test nearest method |
-
- 
-
-## Plugins
+Plugins
 
 | Plugin            | Purpose               |
 |      -|       --|
@@ -180,7 +136,7 @@ JDTLS will automatically start when a valid Java project is detected.
 | nvim-tree.lua     | File explorer         |
 | smear-cursor.nvim | Cursor animation      |
 
-### Telescope FZF Not Working
+Telescope FZF Not Working
 
 Build the extension manually:
 
@@ -189,7 +145,7 @@ cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim
 make
 ```
 
-## Folder Structure
+Folder Structure
 
 Current structure:
 
