@@ -1,4 +1,4 @@
-It's just my own local setup for Java deveplopment enviroment!
+It's just my own local setup for Java deveplopment enviroment.
 
 Create neovim config folder
 ```bash
