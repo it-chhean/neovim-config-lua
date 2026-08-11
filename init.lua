@@ -24,6 +24,17 @@ vim.g.loaded_netrwPlugin = 1
 -- Plugins
 require("lazy").setup({
 
+    -- Colorscheme: luna.nvim
+    {
+        "wtfox/luna.nvim",
+        lazy     = false,
+        priority = 1000,
+        opts     = {
+            -- transparent = false,
+            -- accent = 1.0, -- 0-1, blends syntax accents toward grey_light; 1 = full color
+        },
+    },
+
     -- LSP
     { "neovim/nvim-lspconfig" },
 
@@ -170,14 +181,14 @@ require("lazy").setup({
             require("nvim-tree").setup({
                 hijack_cursor       = true,
                 update_focused_file = { enable = true },
-                view                = { width = 40, side = "left" },
+                view                = { width = 60, side = "left" },
                 renderer = {
                     icons = {
                         show = {
                             file         = false,
                             folder       = true,
                             folder_arrow = true,
-                            git          = false,
+                            git          = true,
                         },
                     },
                 },
@@ -251,7 +262,7 @@ require("lazy").setup({
 -- General settings
 -- ─────────────────────────────────────────────
 
-vim.opt.nu             = true
+vim.opt.nu            = true
 vim.opt.relativenumber = true
 
 vim.opt.tabstop     = 4
@@ -278,7 +289,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.number     = true
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
 vim.opt.ignorecase   = true
@@ -287,19 +298,24 @@ vim.opt.autowriteall = true
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.termguicolors = true   -- was true; classic vim uses terminal's basic colors
+vim.opt.background = "dark"     -- "dark" or "light" depending on your terminal bg
+vim.cmd.colorscheme("luna")
+
 -- ─────────────────────────────────────────────
 -- Transparent background
 -- ─────────────────────────────────────────────
 
-local transparent_groups = {
-    "Normal", "NormalNC", "NormalFloat",
-    "FloatBorder", "SignColumn", "EndOfBuffer",
-}
-for _, group in ipairs(transparent_groups) do
-    vim.api.nvim_set_hl(0, group, { bg = "none" })
-end
-vim.api.nvim_set_hl(0, "NvimTreeNormal",   { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
+-- local transparent_groups = {
+--     "Normal", "NormalNC", "NormalFloat",
+--     "FloatBorder", "SignColumn", "EndOfBuffer",
+-- }
+-- for _, group in ipairs(transparent_groups) do
+--     vim.api.nvim_set_hl(0, group, { bg = "none" })
+-- end
+-- vim.api.nvim_set_hl(0, "NvimTreeNormal",   { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
+
 
 -- ─────────────────────────────────────────────
 -- LSP on_attach keymaps (global)
