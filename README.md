@@ -20,4 +20,4 @@ Open the file
 nvim init.lua
 ```
 
-Paste my init.lua configuration into your `init.lua`.
+Paste my init.lua configuration into your `init.lua`:)
